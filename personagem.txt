@@ -1,0 +1,4 @@
+O personagem famoso associado ao filme "Batman" é o próprio Batman. Seus atributos principais incluem inteligência e força, com níveis de 81 e 40, respectivamente. A editora associada a esse herói é a DC Comics. Portanto, os detalhes do personagem são: 
+Nome do herói: Batman
+Atributos principais: Inteligência: 81, Força: 40
+Editora: DC Comics
