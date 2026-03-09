@@ -1,0 +1,23 @@
+from fastapi import APIRouter
+
+router = APIRouter()
+
+@router.get("/produto/", tags=["Produto"], status_code=200)
+def get_produto():
+    return {"msg": "produto get todos executado"}
+
+@router.get("/produto/{id}", tags=["Produto"], status_code=200)
+def get_produto_id(id: int):
+    return {"msg": "produto get um executado", "id": id}
+
+@router.post("/produto/", tags=["Produto"], status_code=200)
+def post_produto():
+    return {"msg": "produto post executado"}
+
+@router.put("/produto/{id}", tags=["Produto"], status_code=200)
+def put_produto(id: int):
+    return {"msg": "produto put executado", "id": id}
+
+@router.delete("/produto/{id}", tags=["Produto"], status_code=200)
+def delete_produto(id: int):
+    return {"msg": "produto delete executado", "id": id}
