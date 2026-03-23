@@ -9,9 +9,9 @@ POST http://127.0.0.1:8000/cliente/
 content-type: application/json
 
 {
-    "nome": "Rafael Waltrick",
-    "cpf": "12345678900",
-    "telefone": "49999999999"
+    "nome": "Rafael wal",
+    "cpf": "21",
+    "telefone": "43"
 }
 
 ### Verbo PUT - atualiza
@@ -19,9 +19,9 @@ PUT http://127.0.0.1:8000/cliente/2
 content-type: application/json
 
 {
-    "nome": "Rafael Waltrick",
-    "cpf": "12345678900",
-    "telefone": "48888888888"
+    "nome": "Rafael teste",
+    "cpf": "1",
+    "telefone": "4"
 }
 
 ### Verbo DELETE - excluir

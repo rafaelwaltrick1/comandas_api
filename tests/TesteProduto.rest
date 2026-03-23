@@ -1,28 +1,30 @@
 ### Verbo GET - listar todos
 GET http://127.0.0.1:8000/produto/
 
-### Verbo GET - listar um                      RAFAEL WALTRICKs
-GET http://127.0.0.1:8000/produto/10
+### Verbo GET - listar um
+GET http://127.0.0.1:8000/produto/1
 
 ### Verbo POST - adicionar
 POST http://127.0.0.1:8000/produto/
 content-type: application/json
 
 {
-    "nome": "Produto Teste",
+    "nome": "carne",
     "descricao": "Produto criado para teste",
-    "valor": 10.50
+    "foto": "teste",
+    "valor_unitario": 10.50
 }
 
 ### Verbo PUT - atualiza
-PUT http://127.0.0.1:8000/produto/2
+PUT http://127.0.0.1:8000/produto/1
 content-type: application/json
 
 {
-    "nome": "Produto Atualizado",
+    "nome": "carne premium",
     "descricao": "Produto alterado",
-    "valor": 15.90
+    "foto": "nova_foto",
+    "valor_unitario": 15.90
 }
 
 ### Verbo DELETE - excluir
-DELETE http://127.0.0.1:8000/produto/3
+DELETE http://127.0.0.1:8000/produto/1
