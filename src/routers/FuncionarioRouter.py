@@ -7,9 +7,11 @@ from domain.schemas.FuncionarioSchema import (
     FuncionarioUpdate,
     FuncionarioResponse
 )
+from domain.schemas.AuthSchema import FuncionarioAuth
 from infra.orm.FuncionarioModel import FuncionarioDB
 from infra.database import get_db
 from infra.security import get_password_hash
+from infra.dependencies import get_current_active_user, require_group
 
 router = APIRouter()
 
@@ -21,7 +23,10 @@ router = APIRouter()
     status_code=status.HTTP_200_OK,
     summary="Listar funcionários"
 )
-async def get_funcionarios(db: Session = Depends(get_db)):
+async def get_funcionarios(
+    db: Session = Depends(get_db),
+    current_user: FuncionarioAuth = Depends(require_group([1]))
+):
     """Retorna todos os funcionários"""
     try:
         funcionarios = db.query(FuncionarioDB).all()
@@ -40,7 +45,11 @@ async def get_funcionarios(db: Session = Depends(get_db)):
     status_code=status.HTTP_200_OK,
     summary="Buscar funcionário por ID"
 )
-async def get_funcionario(id: int, db: Session = Depends(get_db)):
+async def get_funcionario(
+    id: int,
+    db: Session = Depends(get_db),
+    current_user: FuncionarioAuth = Depends(get_current_active_user)
+):
     """Retorna um funcionário específico pelo ID"""
     try:
         funcionario = db.query(FuncionarioDB).filter(FuncionarioDB.id == id).first()
@@ -66,7 +75,11 @@ async def get_funcionario(id: int, db: Session = Depends(get_db)):
     tags=["Funcionário"],
     summary="Criar novo funcionário"
 )
-async def post_funcionario(funcionario_data: FuncionarioCreate, db: Session = Depends(get_db)):
+async def post_funcionario(
+    funcionario_data: FuncionarioCreate,
+    db: Session = Depends(get_db),
+    current_user: FuncionarioAuth = Depends(require_group([1]))
+):
     """Cria um novo funcionário"""
     try:
         existing_funcionario = db.query(FuncionarioDB).filter(
@@ -113,7 +126,12 @@ async def post_funcionario(funcionario_data: FuncionarioCreate, db: Session = De
     status_code=status.HTTP_200_OK,
     summary="Atualizar funcionário"
 )
-async def put_funcionario(id: int, funcionario_data: FuncionarioUpdate, db: Session = Depends(get_db)):
+async def put_funcionario(
+    id: int,
+    funcionario_data: FuncionarioUpdate,
+    db: Session = Depends(get_db),
+    current_user: FuncionarioAuth = Depends(require_group([1]))
+):
     """Atualiza um funcionário existente"""
     try:
         funcionario = db.query(FuncionarioDB).filter(
@@ -164,7 +182,11 @@ async def put_funcionario(id: int, funcionario_data: FuncionarioUpdate, db: Sess
     tags=["Funcionário"],
     summary="Remover funcionário"
 )
-async def delete_funcionario(id: int, db: Session = Depends(get_db)):
+async def delete_funcionario(
+    id: int,
+    db: Session = Depends(get_db),
+    current_user: FuncionarioAuth = Depends(require_group([1]))
+):
     """Remove um funcionário"""
     try:
         funcionario = db.query(FuncionarioDB).filter(

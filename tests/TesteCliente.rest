@@ -1,28 +1,35 @@
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzMyIsImlkIjo3LCJncnVwbyI6MSwiZXhwIjoxNzc0OTEwNzYzLCJ0eXBlIjoiYWNjZXNzIn0.CYeZobi35W_ESC9AKOaudEsGBPut-mJGrrq5QUgDkGA
+
 ### Verbo GET - listar todos
 GET http://127.0.0.1:8000/cliente/
+Authorization: Bearer {{access_token}}
 
 ### Verbo GET - listar um              RAFAEL WALTRICK
 GET http://127.0.0.1:8000/cliente/10
+Authorization: Bearer {{access_token}}
 
 ### Verbo POST - adicionar
 POST http://127.0.0.1:8000/cliente/
 content-type: application/json
+Authorization: Bearer {{access_token}}
 
 {
-    "nome": "Rafael wal",
-    "cpf": "21",
+    "nome": "Rafael Waltrick",
+    "cpf": "12345",
     "telefone": "43"
 }
 
 ### Verbo PUT - atualiza
-PUT http://127.0.0.1:8000/cliente/2
+PUT http://127.0.0.1:8000/cliente/3
 content-type: application/json
+Authorization: Bearer {{access_token}}
 
 {
-    "nome": "Rafael teste",
-    "cpf": "1",
+    "nome": "Rafael Waltrick atualizado",
+    "cpf": "16",
     "telefone": "4"
 }
 
 ### Verbo DELETE - excluir
 DELETE http://127.0.0.1:8000/cliente/3
+Authorization: Bearer {{access_token}}

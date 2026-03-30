@@ -1,36 +1,43 @@
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzMyIsImlkIjo3LCJncnVwbyI6MSwiZXhwIjoxNzc0OTEwNzYzLCJ0eXBlIjoiYWNjZXNzIn0.CYeZobi35W_ESC9AKOaudEsGBPut-mJGrrq5QUgDkGA
+
 ### Verbo GET - listar todos
 GET http://127.0.0.1:8000/funcionario/
+Authorization: Bearer {{access_token}}
 
 ### Verbo GET - listar um
 GET http://127.0.0.1:8000/funcionario/10
+Authorization: Bearer {{access_token}}
 
 ### Verbo POST - adicionar
 POST http://127.0.0.1:8000/funcionario/
 content-type: application/json
+Authorization: Bearer {{access_token}}
 
 {
-    "nome": "Rafael tes",
-    "matricula": "r",
-    "cpf": "133",
-    "telefone": "tel2383738",
+    "nome": "Zé das Batatas",
+    "matricula": "pas12",
+    "cpf": "42",
+    "telefone": "tel278",
     "grupo": 1,
-    "senha": "ee"
+    "senha": "42"
 }
 
 ### Verbo PUT - atualiza
-PUT http://127.0.0.1:8000/funcionario/2
+PUT http://127.0.0.1:8000/funcionario/5
 content-type: application/json
+Authorization: Bearer {{access_token}}
 
 {
-    "nome": "Rafael Waltrick",
-    "matricula": "ra12353",
-    "cpf": "12",
+    "nome": "Zé das Batatas atualizado",
+    "matricula": "past12312",
+    "cpf": "1234567",
     "telefone": "tel2383738",
     "grupo": 1,
-    "senha": "dc7378a6b6316017b81c51d720e7"
+    "senha": "1234"
 }
 
-### Verbo DELETE - excluir     
-DELETE http://127.0.0.1:8000/funcionario/3
+### Verbo DELETE - excluir
+DELETE http://127.0.0.1:8000/funcionario/5
+Authorization: Bearer {{access_token}}
 
 ## RAFAEL WALTRICK

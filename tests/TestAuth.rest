@@ -1,0 +1,27 @@
+### Login para obter access e refresh tokens
+POST http://127.0.0.1:8000/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "cpf": "34",
+    "senha": "34"
+}
+
+### Cole aqui o token retornado no login
+@access_token = 
+@refresh_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzMyIsImlkIjo3LCJncnVwbyI6MSwiZXhwIjoxNzc1NTExMjgzLCJ0eXBlIjoicmVmcmVzaCJ9.QWrWm8GuLwbPSy6GR03cZwA6s6RkEI36LQloe-F6WA0
+
+### Testar access token em rota protegida
+GET http://127.0.0.1:8000/auth/me HTTP/1.1
+Authorization: Bearer {{access_token}}
+
+### Usar refresh token para obter novos tokens
+POST http://127.0.0.1:8000/auth/refresh HTTP/1.1
+content-type: application/json
+
+{
+    "refresh_token": "{{refresh_token}}"
+}
+
+### Logout
+POST http://127.0.0.1:8000/auth/logout HTTP/1.1

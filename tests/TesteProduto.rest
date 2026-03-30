@@ -1,30 +1,37 @@
-### Verbo GET - listar todos
-GET http://127.0.0.1:8000/produto/
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzNCIsImlkIjo4LCJncnVwbyI6MiwiZXhwIjoxNzc0OTExMTU2LCJ0eXBlIjoiYWNjZXNzIn0.UTiLeXEtNOdZpJWBEaamQQB6MhshTZUAQoAkL90y9Jw
+
+### Verbo GET - listar todos protegida
+GET http://127.0.0.1:8000/produto/3
+Authorization: Bearer {{access_token}}
 
 ### Verbo GET - listar um
-GET http://127.0.0.1:8000/produto/1
+GET http://127.0.0.1:8000/produto/3
+Authorization: Bearer {{access_token}}
 
 ### Verbo POST - adicionar
 POST http://127.0.0.1:8000/produto/
 content-type: application/json
+Authorization: Bearer {{access_token}}
 
 {
-    "nome": "carne",
+    "nome": "pastel queijo ovo",
     "descricao": "Produto criado para teste",
     "foto": "teste",
-    "valor_unitario": 10.50
+    "valor_unitario": 20.50
 }
 
 ### Verbo PUT - atualiza
-PUT http://127.0.0.1:8000/produto/1
+PUT http://127.0.0.1:8000/produto/6
 content-type: application/json
+Authorization: Bearer {{access_token}}
 
 {
-    "nome": "carne premium",
+    "nome": "Pastel carne, queijo e ovo",
     "descricao": "Produto alterado",
     "foto": "nova_foto",
     "valor_unitario": 15.90
 }
 
 ### Verbo DELETE - excluir
-DELETE http://127.0.0.1:8000/produto/1
+DELETE http://127.0.0.1:8000/produto/3
+Authorization: Bearer {{access_token}}
